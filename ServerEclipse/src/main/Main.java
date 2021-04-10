@@ -63,7 +63,7 @@ public class Main extends PApplet {
 		background(0);
 		
 		rectMode(CENTER);
-		textAlign(CENTER);
+		
 
 		player1.pintar();
 		player2.pintar();
@@ -119,10 +119,10 @@ public class Main extends PApplet {
 	
 	public void impactoPlayer2() {
 		
-		for (int i = 0; i < bala.size(); i++) {
+		for (int i = 0; i < bala2.size(); i++) {
 			
-			int posX1=bala.get(i).getPosX();
-			int posY1=bala.get(i).getPosY();
+			int posX1=bala2.get(i).getPosX();
+			int posY1=bala2.get(i).getPosY();
 			int posX2=player1.getX();
 			int posY2=player1.getY();
 			
@@ -152,11 +152,12 @@ public class Main extends PApplet {
 		}
 		
 			fill(255);
-			rect(250, 250, 200, 200);
+			rect(250, 250, 200, 150);
 			
 			fill(0);
-			text(ganador+" es el ganador", 250, 250);
-			text("Presione ESPACIO para jugar", 250, 250+50);
+			textAlign(CENTER);
+			text(ganador+" es el ganador", 255, 250);
+			text("Presione ESPACIO para jugar", 255, 250+20);
 			
 	}
 	
@@ -211,8 +212,12 @@ public class Main extends PApplet {
 				break;
 				
 			case "FIRE":
-				Bala balaJ1 = new Bala(player1.getX()+50,player1.getY(), true, this);
-				bala.add(balaJ1);
+				
+				if (deadStatus==false) {
+					Bala balaJ1 = new Bala(player1.getX()+50,player1.getY(), true, this);
+					bala.add(balaJ1);
+				}
+				
 				break;
 
 			}
@@ -251,8 +256,13 @@ public class Main extends PApplet {
 				break;
 				
 			case "FIRE":
-				Bala balaJ2 = new Bala(player2.getX()-50,player2.getY(), false, this);
-				bala.add(balaJ2);
+				
+				if (deadStatus==false) {
+					
+					Bala balaJ2 = new Bala(player2.getX()-50,player2.getY(), false, this);
+					bala2.add(balaJ2);
+				}
+				
 				break;
 
 			}
